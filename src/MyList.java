@@ -5,19 +5,15 @@ public class MyList<T> {
     int capacity;
 
     public MyList() {
-        // Create a new array of type Object with the specified size
         myArray = new Object[10];
-        //MyList<T> arr = new MyList<>(10);
     }
     
     public MyList(int capacity) {
-        // Create a new array of type Object with the specified size
         this.capacity=capacity;
         myArray = new Object[this.capacity];
     }
 
     public void doubleCapacity(){
-        //this.myArray=myArray;
         Object[] myArray2 = new Object[myArray.length*2];
         for(int i=0; i<myArray.length; i++){
             myArray2[i]=myArray[i];
@@ -40,7 +36,6 @@ public class MyList<T> {
     }
 
     public void add(T data) {
-        // Perform type casting manually
         int count=0;
         for(int i=0; i<myArray.length; i++){
             if(myArray[i]==null){
@@ -62,7 +57,6 @@ public class MyList<T> {
     }
 
     public void set(int index, T data) {
-        // Perform type casting manually
         if(index>=0 && index<myArray.length){
             myArray[index] = (Object) data;
             System.out.println(data + " was written on index no " + index);
@@ -74,7 +68,6 @@ public class MyList<T> {
     }
 
     public void get(int i) {
-        // Perform type casting manually
         if(i>=0 && i<myArray.length){
             System.out.println("Index no " + i + " is: " + myArray[i]);
         }
