@@ -2,8 +2,11 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
+    //integer add yaparken string girince çökme sorunsalı...
+    //kapasite seçerken iki enter sorunsalı...
+    //
+
     public static void main(String[] args) throws Exception {
-        //MyList<Object> a;
         Scanner input = new Scanner(System.in);
         System.out.println("Please select the array type and capacity.");
         System.out.println("Array Type: String(1) / Integer(2)");
@@ -22,7 +25,7 @@ public class Main {
                     a.add(input.next());
                     break;
 
-                    case 2: // null dönememe sıkıntısını çöz...
+                    case 2:
                     System.out.print("What to check: ");
                     a.indexOf(input.next());
                     break;
@@ -74,7 +77,7 @@ public class Main {
                     a.clear();
                     break;
 
-                    case 13: // null dönememe sıkıntısını çöz...
+                    case 13:
                     System.out.println("Sublist start: ");
                     int start = input.nextInt();
                     System.out.println("Sublist finish: ");
@@ -82,7 +85,7 @@ public class Main {
                     System.out.println(Arrays.toString(a.sublist(start, finish)));;
                     break;
 
-                    case 14: // null dönememe sıkıntısını çöz...
+                    case 14:
                     System.out.println("What to check:");
                     if(a.contains(input.next())){
                         System.out.println("List contains your data.");
@@ -102,8 +105,8 @@ public class Main {
         else if(type==2){
             MyList<Integer> a = new MyList<>(cpct);
             boolean check = true;
-            while(true){
-                System.out.println("Add(1) / Check(2) / Print(3) / Size(4) / Capacity(5) / Set(6) / Get(7) / Remove(8) / Check(R)(9)");
+            while(check){
+                System.out.println("Add(1) / Check(2) / Print(3) / Size(4) / Capacity(5) / Set(6) / Get(7) / Remove(8) / Check(R)(9) / Empty Check(10) / Array(11) / Clear(12) / Sublist(13) / Contain Check(14) / Exit(15)");
                 int slct = input.nextInt();
                 switch(slct){
                     case 1:
@@ -113,7 +116,6 @@ public class Main {
 
                     case 2:
                     System.out.print("What to check: ");
-                    //instanceof ile Integer olup olmadığını kontrol et önce...
                     a.indexOf(input.nextInt());
                     break;
 
@@ -122,7 +124,7 @@ public class Main {
                     break;
 
                     case 4:
-                    a.size();
+                    System.out.println("The size is: " + a.size());
                     break;
 
                     case 5:
@@ -151,23 +153,46 @@ public class Main {
                     //instanceof ile Integer olup olmadığını kontrol et önce...
                     a.lastIndexOf(input.nextInt());
                     break;
+
+                    case 10:
+                    a.isEmpty();
+                    break;
+
+                    case 11:
+                    a.toArray();
+                    break;
+
+                    case 12:
+                    a.clear();
+                    break;
+
+                    case 13:
+                    System.out.println("Sublist start: ");
+                    int start = input.nextInt();
+                    System.out.println("Sublist finish: ");
+                    int finish = input.nextInt();
+                    System.out.println(Arrays.toString(a.sublist(start, finish)));;
+                    break;
+
+                    case 14:
+                    System.out.println("What to check:");
+                    if(a.contains(input.nextInt())){
+                        System.out.println("List contains your data.");
+                    }
+                    else{
+                        System.out.println("List doesn't contain your data.");
+                    }
+                    break;
+
+                    case 15:
+                    System.out.println("See you later.");
+                    check=false;
+                    break;
                 }
             }
         }
         else{
             System.out.println("You didn't select a valid option!");
         }
-        
-        /*a.set(0, 0);
-        a.set(1, 1);
-
-
-        System.out.println(a.get(0));
-        System.out.println(a.get(1));
-        a.add(14);
-        System.out.println(a.getCapacity());
-        System.out.println(a.size());
-        System.out.println(a.get(100));
-        a.toString();*/
     }
 }

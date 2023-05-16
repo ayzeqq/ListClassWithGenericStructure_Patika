@@ -14,7 +14,6 @@ public class MyList<T> {
         // Create a new array of type Object with the specified size
         this.capacity=capacity;
         myArray = new Object[this.capacity];
-        
     }
 
     public void doubleCapacity(){
@@ -60,7 +59,6 @@ public class MyList<T> {
                 }
             }
         }
-        
     }
 
     public void set(int index, T data) {
@@ -79,11 +77,9 @@ public class MyList<T> {
         // Perform type casting manually
         if(i>=0 && i<myArray.length){
             System.out.println("Index no " + i + " is: " + myArray[i]);
-            //return (T) myArray[i];
         }
         else{
             System.out.println("null");
-            //return null;
         }
     }
 
@@ -98,7 +94,6 @@ public class MyList<T> {
             myArray[myArray.length-1]=null;
             System.out.println("Removed.");
         }
-
     }
 
     public String toString(){
@@ -109,7 +104,10 @@ public class MyList<T> {
 
     public int indexOf(T data){
         for(int i=0; i<myArray.length; i++){
-            if(myArray[i].equals(data)){
+            if(myArray[i]==null){
+                continue;
+            }
+            else if(myArray[i].equals(data)){
                 System.out.println("Index: " + i);
                 return i;
             }
@@ -120,6 +118,9 @@ public class MyList<T> {
 
     public int lastIndexOf(T data){
         for(int i=myArray.length-1; i>=0; i--){
+            if(myArray[i]==null){
+                continue;
+            }
             if(myArray[i].equals(data)){
                 System.out.println("Last index: " + i);
                 return i;
@@ -162,15 +163,19 @@ public class MyList<T> {
 
     public Object[] sublist(int start, int finish){
         Object[] arr = new Object[finish-start+1];
-        for(int i=start; i<=finish; i++){
-            arr[i]=myArray[i];
+        for(int i=start, j=0; i<=finish; i++){
+            arr[j]=myArray[i];
+            j++;
         }
         return arr;
     }
 
     public boolean contains(T data){
         for(int i=0; i<myArray.length; i++){
-            if(myArray[i].equals(data)){
+            if(myArray[i]==null){
+                continue;
+            }
+            else if(myArray[i].equals(data)){
                 return true;
             }
         }
